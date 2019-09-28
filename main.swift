@@ -11,7 +11,7 @@ for _ in 1...columns-1{
     string2 += "."
 }
 
-    for i in 1...columns{
+    for i in 1...rows{
         if i %  2 != 0{
             print(string1)
         } else {
