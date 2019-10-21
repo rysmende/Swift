@@ -2,63 +2,62 @@
 //  TableViewController.swift
 //  todolist
 //
-//  Created by ITLabAdmin on 10/16/19.
+//  Created by ITLabAdmin on 10/21/19.
 //  Copyright © 2019 ITLabAdmin. All rights reserved.
 //
 
 import UIKit
 
-struct CellData {
-    let title:String
-    let description:String?
-    
-}
+var taskTitles = ["f"]
+var taskSubTitles = ["uck"]
 
 class TableViewController: UITableViewController {
 
     
+    var newTaskTitle: String = ""
+    
+    var newTaskSubTitle: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.registerTableViewCells()
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
-    }
-    func registerTableViewCells(){
-        let textFieldCell = UINib(nibName : "CustomTableViewCell", bundle : nil)
-        self.tableView.register(textFieldCell, forCellReuseIdentifier: "CustomTableViewCell")
     }
 
-    //override func didReceiveMemoryWarning() {
-      //  super.didReceiveMemoryWarning()
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    // }
+    }
 
     // MARK: - Table view data source
 
-    //override func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-      //  return 0
-    //}
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return 1
     }
 
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell") as? CustomTableViewCell{
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
-            return cell!
-        }
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return taskTitles.count
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "taskTitle", for: indexPath)
+
+        cell.textLabel?.text = taskTitles[indexPath.row]
+        cell.detailTextLabel?.text = taskSubTitles[indexPath.row]
+
+        return cell
+    }
+ 
 
     /*
     // Override to support conditional editing of the table view.
