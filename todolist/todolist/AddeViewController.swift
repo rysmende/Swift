@@ -32,6 +32,7 @@ class AddeViewController: UIViewController {
         if taskTitle.text != "" && taskDescription.text != ""{
             taskTitles.append(taskTitle.text!)
             taskSubTitles.append(taskDescription.text!)
+            dones.append(false)
         }
     }
     

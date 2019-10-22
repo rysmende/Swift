@@ -7,16 +7,16 @@
 //
 
 import UIKit
-
-var taskTitles = ["f"]
-var taskSubTitles = ["uck"]
+let defaults = UserDefaults.standard
+var taskTitles = [String]()
+var taskSubTitles = [String]()
+var dones = [Bool]()
+var indexAt = 0
 
 class TableViewController: UITableViewController {
 
     
-    var newTaskTitle: String = ""
-    
-    var newTaskSubTitle: String = ""
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ class TableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -42,7 +42,7 @@ class TableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return taskTitles.count
+        return  taskTitles.count
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -54,7 +54,11 @@ class TableViewController: UITableViewController {
 
         cell.textLabel?.text = taskTitles[indexPath.row]
         cell.detailTextLabel?.text = taskSubTitles[indexPath.row]
-
+        if (dones[indexPath.row]){
+            cell.backgroundColor = .green
+        } else {
+            cell.backgroundColor = .white
+        }
         return cell
     }
  
@@ -67,18 +71,34 @@ class TableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            
+            taskTitles.remove(at: indexPath.row)
+            taskSubTitles.remove(at: indexPath.row)
+            dones.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
+        
+        }
     }
-    */
-
+    
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        indexAt = indexPath.row
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let secondViewController = storyboard.instantiateViewController(withIdentifier: "infoVC") as UIViewController
+        present(secondViewController, animated: true, completion: nil)
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if (dones[indexPath.row]){
+            dones[indexPath.row] = false
+        } else {
+            dones[indexPath.row] = true
+        }
+        tableView.reloadData()
+    }
     /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
@@ -103,5 +123,5 @@ class TableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

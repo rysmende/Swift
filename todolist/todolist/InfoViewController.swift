@@ -2,7 +2,7 @@
 //  InfoViewController.swift
 //  todolist
 //
-//  Created by ITLabAdmin on 10/21/19.
+//  Created by ITLabAdmin on 10/22/19.
 //  Copyright © 2019 ITLabAdmin. All rights reserved.
 //
 
@@ -10,29 +10,28 @@ import UIKit
 
 class InfoViewController: UIViewController {
 
+    @IBOutlet weak var tTitle: UITextField!
+    @IBOutlet weak var tDescription: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        title.text = taskTitles[row]
-        description.text = taskSubTitles[row]
+        
+        tTitle.text = taskTitles[indexAt]
+        tDescription.text = taskSubTitles[indexAt]
         
         // Do any additional setup after loading the view.
     }
-
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var description: UILabel!
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
+    @IBAction func save(_ sender: Any) {
+        taskTitles[indexAt] = tTitle.text!
+        taskSubTitles[indexAt] = tDescription.text!
     }
-    
-
     /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
+        // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
     */

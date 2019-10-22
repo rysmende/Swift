@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		843ED6E7235DAFB1008EE835 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843ED6E6235DAFB1008EE835 /* TableViewController.swift */; };
 		843ED6E9235DB93B008EE835 /* AddeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843ED6E8235DB93B008EE835 /* AddeViewController.swift */; };
-		843ED727235DE84E008EE835 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843ED726235DE84E008EE835 /* InfoViewController.swift */; };
 		8459F0DF2357237000C4D40A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8459F0DE2357237000C4D40A /* AppDelegate.swift */; };
 		8459F0E42357237000C4D40A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8459F0E22357237000C4D40A /* Main.storyboard */; };
 		8459F0E62357237000C4D40A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8459F0E52357237000C4D40A /* Assets.xcassets */; };
 		8459F0E92357237000C4D40A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8459F0E72357237000C4D40A /* LaunchScreen.storyboard */; };
 		8459F0F42357237000C4D40A /* todolistTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8459F0F32357237000C4D40A /* todolistTests.swift */; };
 		8459F0FF2357237000C4D40A /* todolistUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8459F0FE2357237000C4D40A /* todolistUITests.swift */; };
+		845D54A8235F136D00F6D851 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D54A7235F136D00F6D851 /* InfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +38,6 @@
 /* Begin PBXFileReference section */
 		843ED6E6235DAFB1008EE835 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		843ED6E8235DB93B008EE835 /* AddeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddeViewController.swift; sourceTree = "<group>"; };
-		843ED726235DE84E008EE835 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		8459F0DB2357237000C4D40A /* todolist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todolist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8459F0DE2357237000C4D40A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8459F0E32357237000C4D40A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -51,6 +50,7 @@
 		8459F0FA2357237000C4D40A /* todolistUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = todolistUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8459F0FE2357237000C4D40A /* todolistUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = todolistUITests.swift; sourceTree = "<group>"; };
 		8459F1002357237000C4D40A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		845D54A7235F136D00F6D851 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +103,7 @@
 			children = (
 				843ED6E6235DAFB1008EE835 /* TableViewController.swift */,
 				843ED6E8235DB93B008EE835 /* AddeViewController.swift */,
-				843ED726235DE84E008EE835 /* InfoViewController.swift */,
+				845D54A7235F136D00F6D851 /* InfoViewController.swift */,
 				8459F0DE2357237000C4D40A /* AppDelegate.swift */,
 				8459F0E22357237000C4D40A /* Main.storyboard */,
 				8459F0E52357237000C4D40A /* Assets.xcassets */,
@@ -267,7 +267,7 @@
 			files = (
 				8459F0DF2357237000C4D40A /* AppDelegate.swift in Sources */,
 				843ED6E9235DB93B008EE835 /* AddeViewController.swift in Sources */,
-				843ED727235DE84E008EE835 /* InfoViewController.swift in Sources */,
+				845D54A8235F136D00F6D851 /* InfoViewController.swift in Sources */,
 				843ED6E7235DAFB1008EE835 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
