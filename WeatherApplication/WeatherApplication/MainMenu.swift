@@ -7,76 +7,19 @@
 //
 
 import UIKit
-// MARK: - Welcome
-struct Welcome: Codable {
-    let coord: Coord
-    let weather: [Weather]
-    let base: String
-    let main: Main
-    let visibility: Int
-    let wind: Wind
-    let clouds: Clouds
-    let dt: Int
-    let sys: Sys
-    let timezone, id: Int
-    let name: String
-    let cod: Int
-}
 
-// MARK: - Clouds
-struct Clouds: Codable {
-    let all: Int
-}
-
-// MARK: - Coord
-struct Coord: Codable {
-    let lon, lat: Double
-}
-
-// MARK: - Main
-struct Main: Codable {
-    let temp: Double
-    let pressure, humidity: Int
-    let tempMin, tempMax: Double
-    enum CodingKeys: String, CodingKey {
-        case temp, pressure, humidity
-        case tempMin = "temp_min"
-        case tempMax = "temp_max"
-    }
-}
-
-// MARK: - Sys
-struct Sys: Codable {
-    let type, id: Int
-    let country: String
-    let sunrise, sunset: Int
-}
-
-// MARK: - Weather
-struct Weather: Codable {
-    let id: Int
-    let main, weatherDescription, icon: String
-    enum CodingKeys: String, CodingKey {
-        case id, main
-        case weatherDescription = "description"
-        case icon
-    }
-}
-
-// MARK: - Wind
-struct Wind: Codable {
-    let speed: Int
-}
-
-class MainMenu: UIViewController{
+class MainMenu: UIViewController, UITableViewDelegate,  UITableViewDataSource {
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var city: UILabel!
     @IBOutlet weak var temperature: UILabel!
     @IBOutlet weak var weatherIcon: UIImageView!
+    var welcome:Welcome? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let urlString = "https://api.openweathermap.org/data/2.5/weather?lat=42.874722&lon=74.612222&APPID=3331e666239ea2e7435b26c22893307c"
+        
+        let urlString = "https://api.openweathermap.org/data/2.5/forecast?lat=42.874722&lon=74.612222&APPID=079587841f01c6b277a82c1c7788a6c3"
         guard let url = URL(string: urlString ) else {
             return
         }
@@ -86,9 +29,9 @@ class MainMenu: UIViewController{
                 return
             }
             do {
-                let tWelcome = try JSONDecoder().decode(Welcome.self, from: data)
+                self.welcome = try JSONDecoder().decode(Welcome.self, from: data)
                 DispatchQueue.main.async {
-                    self.display(welcome: tWelcome)
+                    self.display()
                 }
                 let queue = OperationQueue.main
                 queue.addOperation {
@@ -99,13 +42,46 @@ class MainMenu: UIViewController{
             }
         }.resume()
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return welcome!.cnt
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FutureWeatherCell
+        let fullTime    = welcome?.list[indexPath.row].dt_txt
+        let fullTimeArr = fullTime?.components(separatedBy: " ")
+        
+        let date = String((fullTimeArr?[0].suffix(5))!)
+        let time = String((fullTimeArr?[1].prefix(5))!)
+        cell.time.text = "\(date) \(time)"
+    switch(welcome?.list[indexPath.row].weather[0].main){
+        case "Thunderstorm":
+            cell.icon.image = UIImage(named: "thunderstorm")
+        case "Drizzle":
+            cell.icon.image = UIImage(named: "sleet")
+        case "Rain":
+            cell.icon.image = UIImage(named: "rain")
+        case "Clear":
+            cell.icon.image = UIImage(named: "sunny")
+        case "Snow":
+            cell.icon.image = UIImage(named: "snow")
+        case "Clouds":
+            cell.icon.image = UIImage(named: "cloudy")
+        default:
+            cell.icon.image = UIImage(named: "wind")
+        }
+        cell.temp.text = "\(Int((welcome?.list[indexPath.row].main.temp)! - 273.15)) °C"
+        cell.backgroundColor = UIColor(white: 1, alpha: 0.1)
+        
+        return cell
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    func display(welcome:Welcome){
-        city.text = welcome.name
-        temperature.text = "\(Int(welcome.main.temp - 273.15)) °C"
-        switch welcome.weather[0].main {
+    func display(){
+        city.text = welcome?.city.name
+        temperature.text = "\(Int((welcome?.list[0].main.temp)! - 273.15)) °C"
+        switch welcome?.list[0].weather[0].main {
         case "Thunderstorm":
             weatherIcon.image = UIImage(named: "thunderstorm")
         case "Drizzle":
@@ -121,6 +97,11 @@ class MainMenu: UIViewController{
         default:
             weatherIcon.image = UIImage(named: "wind")
         }
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.backgroundColor = UIColor(white: 1, alpha: 0.01)
+        tableView.reloadData()
     }
+   
 }
 

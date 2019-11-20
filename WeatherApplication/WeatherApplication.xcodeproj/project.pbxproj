@@ -14,6 +14,8 @@
 		5F919E33237C1E3700E20F6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F919E31237C1E3700E20F6A /* LaunchScreen.storyboard */; };
 		5F919E3E237C1E3700E20F6A /* WeatherApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F919E3D237C1E3700E20F6A /* WeatherApplicationTests.swift */; };
 		5F919E49237C1E3700E20F6A /* WeatherApplicationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F919E48237C1E3700E20F6A /* WeatherApplicationUITests.swift */; };
+		84A34E592385679300CD06DB /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A34E582385679300CD06DB /* Classes.swift */; };
+		84A34E5D238578A500CD06DB /* FutureWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A34E5C238578A500CD06DB /* FutureWeatherCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		5F919E44237C1E3700E20F6A /* WeatherApplicationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherApplicationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F919E48237C1E3700E20F6A /* WeatherApplicationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherApplicationUITests.swift; sourceTree = "<group>"; };
 		5F919E4A237C1E3700E20F6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84A34E582385679300CD06DB /* Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
+		84A34E5C238578A500CD06DB /* FutureWeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureWeatherCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,8 @@
 				5F919E2A237C1E3500E20F6A /* MainMenu.swift */,
 				5F919E2C237C1E3500E20F6A /* Main.storyboard */,
 				5F919E2F237C1E3700E20F6A /* Assets.xcassets */,
+				84A34E5C238578A500CD06DB /* FutureWeatherCell.swift */,
+				84A34E582385679300CD06DB /* Classes.swift */,
 				5F919E31237C1E3700E20F6A /* LaunchScreen.storyboard */,
 				5F919E34237C1E3700E20F6A /* Info.plist */,
 			);
@@ -257,7 +263,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F919E2B237C1E3500E20F6A /* MainMenu.swift in Sources */,
+				84A34E5D238578A500CD06DB /* FutureWeatherCell.swift in Sources */,
 				5F919E29237C1E3500E20F6A /* AppDelegate.swift in Sources */,
+				84A34E592385679300CD06DB /* Classes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
